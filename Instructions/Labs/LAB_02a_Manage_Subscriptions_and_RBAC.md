@@ -116,14 +116,16 @@ In this task, you will create an Azure Active Directory user, assign the RBAC ro
     | Name | **az104-02-aaduser1**|
     | Let me create the password | enabled |
     | Initial password | **Pa55w.rd124** |
+    
+1. Click **Create** then click on the newly created profile.    
 
-    >**Note**: **Copy to clipboard** the full **User name**. You will need it later in this lab.
+    >**Note**: **Copy to clipboard** the full User Principal Name (user name plus domain)
 
-1. In the Azure portal, navigate back to the **az104-02-mg1** management group and display its **details**.
+1. In the Azure portal, Search for and select Management groups and then, on the Management groups blade,navigate back to the **az104-02-mg1** management group and display its **details**.
 
 1. Click **Access control (IAM)**, click **+ Add** followed by **Role assignment**, and assign the **Support Request Contributor (Custom)** role to the newly created user account.
 
-1. Open an **InPrivate** browser window and sign in to the [Azure portal](https://portal.azure.com) using the newly created user account. When prompted to update the password, change the password for the user.
+1. Open an **InPrivate** browser window and sign in to the [Azure portal](https://portal.azure.com) using the newly created user account. When prompted to update the password, change the password for the user to **Pa55w.rd456**.
 
     >**Note**: Rather than typing the user name, you can paste the content of Clipboard.
 
@@ -163,11 +165,15 @@ In this task, you will create an Azure Active Directory user, assign the RBAC ro
    Remove-AzRoleAssignment -ObjectId '[object_ID]' -RoleDefinitionName 'Support Request Contributor (Custom)' -Scope $scope
    ```
 
+    **Note**: Open Notepad to modify the above script, then copy and paste into PowerShelll.
+
 1. From the Cloud Shell pane, run the following to remove the custom role definition:
 
    ```powershell
    Remove-AzRoleDefinition -Name 'Support Request Contributor (Custom)' -Force
    ```
+   
+1. Close the Cloud Shell pane.   
 
 1. In the Azure portal, navigate back to the **Users - All users** blade of the **Azure Active Directory**, and delete the **az104-02-aaduser1** user account.
 
